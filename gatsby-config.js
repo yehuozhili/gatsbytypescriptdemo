@@ -9,17 +9,38 @@ module.exports = {
   plugins: [
     "gatsby-plugin-styled-components",
     "gatsby-plugin-typescript",
-    // {
-    //   resolve: `gatsby-plugin-layout`,
-    //   options: {    //这个插件用来持久化组件
-    //     component: require.resolve(`./src/Layouts/index.tsx`),
-    //   },
-    // },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        //这个插件用来持久化组件
+        component: require.resolve(`./src/Layouts/index.tsx`),
+      },
+    },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "content",
+        path: `${__dirname}/src/docs`,
       },
     },
     "gatsby-transformer-sharp",

@@ -12,8 +12,30 @@ const Wrapper = styled.section`
   background: papayawhip;
 `
 
+class App extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props)
+    this.state = {
+      count: 0,
+    }
+  }
+  handleClick = () => {
+    this.setState({ count: this.state.count + 1 })
+    this.setState({ count: this.state.count + 1 })
+    this.setState({ count: this.state.count + 1 })
+  }
+  render() {
+    return (
+      <div>
+        {this.state.count}
+        <button onClick={this.handleClick}>+++</button>
+      </div>
+    )
+  }
+}
+
 export default () => (
   <Wrapper>
-    <Title>Hello World!</Title>
+    <App></App>
   </Wrapper>
 )
